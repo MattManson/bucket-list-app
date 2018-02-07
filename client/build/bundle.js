@@ -65,96 +65,9 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-const ListView = __webpack_require__(1);
-const Request = __webpack_require__(2);
-// const listView = new ListView();
-const bucketListRequest = new Request('http://localhost:3000/api/countries');
-const countriesRequest = new Request('https://restcountries.eu/rest/v2');
-
-
-var populateDropdown = function(countries){
-  console.log(countries);
-  var contents = document.querySelector('#dropdown');
-  countries.forEach(function(country, index){
-    var option = document.createElement('option');
-    option.text = country.name;
-    option.value = index;
-    contents.appendChild(option);
-  })
-}
-
-const app = function(){
-  console.log("beep boop");
-  countriesRequest.get(populateDropdown);
-
-  
-
-
-
-}
-
-window.addEventListener('load', app);
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-const Request = function(url){
-  this.url = url;
-}
-
-Request.prototype.get = function(callback){
-  const request = new XMLHttpRequest();
-  request.open('GET', this.url);
-  request.addEventListener('load', function(){
-    if(this.status !== 200){
-      return;
-    }
-    const responseBody = JSON.parse(this.responseText);
-    callback(responseBody);
-  });
-  request.send();
-};
-
-Request.prototype.post = function (callback, body) {
-  const request = new XMLHttpRequest();
-  request.open('POST', this.url);
-  request.setRequestHeader('Content-Type', 'application/json');
-  request.addEventListener('load', function(){
-    if (this.status !== 201) {
-      return;
-    };
-    console.log("connected");
-    const responseBody =JSON.parse(this.responseText);
-    callback(responseBody);
-  });
-  request.send(JSON.stringify(body));
-};
-
-Request.prototype.delete = function (callback) {
-  const request = new XMLHttpRequest();
-  request.open('DELETE', this.url);
-  request.addEventListener('load', function(){
-    if(this.status !== 204){
-      return;
-    };
-    console.log('deleted');
-    callback();
-  });
-  request.send();
-};
-
-module.exports = Request;
-
+throw new Error("Module parse failed: Unexpected token (44:0)\nYou may need an appropriate loader to handle this file type.\n| var displayPreviousChoices =\n| \n| const app = function(){\n|   countriesRequest.get(populateDropdown);\n| ");
 
 /***/ })
 /******/ ]);
